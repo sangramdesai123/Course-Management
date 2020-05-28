@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 import { RegistrationService } from '../registration.service';
 import { User } from '../user';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,16 +13,26 @@ import { User } from '../user';
 })
 export class LoginComponent implements OnInit {
   user=new User();
-
-  constructor( private _service : RegistrationService) { }
+  msg="";
+  constructor( private _service : RegistrationService, private _router : Router) { }
 
   ngOnInit(): void {
   }
 
   loginUser(){
     this._service.loginUserFromRemote(this.user).subscribe(
-      data => console.log("responce recived"),
-      error => console.log("Exception ")
+      data => {
+        console.log("responce recived");
+        this._router.navigate(['/loginsuccess']);
+      },
+      error => {
+        console.log("Exception ");
+        this.msg ="Bad Creadiantional,Enter Valid Email Id Password";
+      }
     )
+  }
+
+  gotoregistration(){
+    this._router.navigate(['/registration']);
   }
 }
