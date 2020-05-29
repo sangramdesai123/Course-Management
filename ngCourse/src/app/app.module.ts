@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginsuccessComponent } from './loginsuccess/loginsuccess.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { RegistrationService } from './registration.service';
+import { AddcourseComponent } from './addcourse/addcourse.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     RegistrationComponent,
     LoginsuccessComponent,
     DashboardComponent,
-    NavbarComponent
+    NavbarComponent,
+    AddcourseComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [RegistrationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

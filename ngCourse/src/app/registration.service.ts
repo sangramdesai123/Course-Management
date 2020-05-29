@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, from } from 'rxjs';
 import { User } from './user';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Course } from './Course';
 
 @Injectable({
   providedIn: 'root'
@@ -12,5 +13,9 @@ export class RegistrationService {
 
   public loginUserFromRemote(user:User):Observable<any>{
     return this._http.post<any>("http://localhost:8080/login",user);
+  }
+
+  public addCourse(course:Course):Observable<any>{
+    return this._http.post<any>("http://localhost:8080/addcourse",course,{responseType:'text' as 'json'});
   }
 }

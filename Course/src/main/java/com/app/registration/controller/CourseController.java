@@ -23,16 +23,16 @@ public class CourseController {
 	
 	@PostMapping("/addcourse")
 	@CrossOrigin(origins = "http://localhost:4200")
-	public Course addCourse(@RequestBody Course course) throws Exception {
+	public String addCourse(@RequestBody Course course) throws Exception {
 		String tempskill= course.getSkill();
 		if(tempskill !=null && !"".equals(tempskill)) {
 			Course courseObj= cservice.fetchCourseBySkill(tempskill);
 			if(courseObj != null) {
-				throw new Exception("Course with "+tempskill+" id is already exist");
+				return "Course with "+tempskill+" id is already exist";
 			}
 		}
 		Course courseObj= cservice.saveCourse(course);
-		return courseObj;
+		return "Course added Successfully";
 	}
 	@GetMapping("/getcourse")
 	@CrossOrigin(origins = "http://localhost:4200")
@@ -43,6 +43,7 @@ public class CourseController {
 	}
 	
 	@GetMapping("/getcourse/{id}")
+	@CrossOrigin(origins = "http://localhost:4200")
 	public Optional<Course>  getOne(@PathVariable Integer id) {
 	    try {
 	        Optional<Course> course = cservice.get(id);
@@ -71,12 +72,13 @@ public class CourseController {
 //	}
 	
 	@DeleteMapping("/deleteCourse/{id}")
-	public String deleteCourse(@PathVariable int id) {
+	@CrossOrigin(origins = "http://localhost:4200")
+	public List<Course> deleteCourse(@PathVariable int id) {
 		try {
 			cservice.deleteCourse(id);
-			return "Course Deleted";
+			 return (List<Course>) cservice.findAllCourse();
 		}catch(Exception e) {
-			return "Course Not found";
+			return null;
 		}
 		
 	}
