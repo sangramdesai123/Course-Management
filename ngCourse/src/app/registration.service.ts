@@ -18,4 +18,16 @@ export class RegistrationService {
   public addCourse(course:Course):Observable<any>{
     return this._http.post<any>("http://localhost:8080/addcourse",course,{responseType:'text' as 'json'});
   }
+
+  public getAllCourse(){
+    return this._http.get<any>("http://localhost:8080/getcourse");
+  }
+
+  public getCourseById(id){
+    return this._http.get<any>("http://localhost:8080/getcourse/"+id);
+  }
+  
+  public deleteCourse(id){
+    return this._http.delete<any>("http://localhost:8080/deleteCourse/"+id);
+  }
 }

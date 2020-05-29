@@ -1,1 +1,35 @@
 <app-navbar></app-navbar>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<div class="container">
+<div class="container">
+    <div class="row col-md-10 col-md-offset-1 custyle">
+    <table class="table table-striped custab">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Creator</th>
+            <th>Description</th>
+            <th>Skill</th>
+            <th>Prerequisite</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let course of courselist">
+            <td>{{course.id}}</td>
+            <td>{{course.creator}}</td>
+            <td>{{course.description}}</td>
+            <td>{{course.skill}}</td>
+            <td>{{course.prerequisite}}</td>
+            <td class="text-center"><button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Delete</button></td>
+          </tr>
+    </tbody>
+    </table>
+    </div>
+</div>
