@@ -27,7 +27,7 @@
             <td>{{course.description}}</td>
             <td>{{course.skill}}</td>
             <td>{{course.prerequisite}}</td>
-            <td class="text-center"><button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Delete</button></td>
+            <td class="text-center"><button class="btn btn-danger btn-xs" (click)="deleteCourse(course.id)"><span class="glyphicon glyphicon-remove" ></span> Delete</button></td>
           </tr>
     </tbody>
     </table>

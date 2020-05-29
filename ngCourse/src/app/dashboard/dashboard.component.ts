@@ -11,6 +11,11 @@ export class DashboardComponent implements OnInit {
   courselist:any;
   constructor(private _service: RegistrationService) { }
 
+  public deleteCourse(id:number){
+    let resp=this._service.deleteCourse(id);
+    resp.subscribe((data)=> this.courselist=data);
+  }
+  
   ngOnInit(): void {
     let resp=this._service.getAllCourse();
     resp.subscribe((data)=> this.courselist=data);
