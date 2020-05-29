@@ -1,11 +1,15 @@
 package com.app.registration.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,5 +40,38 @@ public class CourseController {
 		//if()
 		//return "hello";
 		return (List<Course>) cservice.findAllCourse();
+	}
+	
+	@GetMapping("/getcourse/{id}")
+	public Optional<Course>  getOne(@PathVariable Integer id) {
+	    try {
+	        Optional<Course> course = cservice.get(id);
+	        return course;
+	    } catch (Exception e) {
+	        return null;
+	    }      
+	}
+	
+//	@PutMapping("/updatecourse/{id}")
+//	public Course updatecourse(@RequestBody Course course, @PathVariable Integer id) {
+//	    try {
+//	    	Optional<Course> existCourse =null;
+//	        existCourse = cservice.get(id);
+//	        existCourse.setCreator(course.getCreator());
+//	        existCourse.setDescription(course.getDescription());
+//	        existCourse.setSkill(course.getSkill());
+//	        existCourse.setPrerequisite(course.getPrerequisite());
+//	        existCourse.setFeedback(course.getFeedback());
+//	        existCourse.setRatting(course.getRatting());
+//	        cservice.saveCourse(existCourse);
+//	        return course;
+//	    } catch (Exception e) {
+//	        return null;
+//	    }      
+//	}
+	
+	@DeleteMapping("/deleteCourse/{id}")
+	void deleteCourse(@PathVariable int id) {
+		cservice.deleteCourse(id);
 	}
 }

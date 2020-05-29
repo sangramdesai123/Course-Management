@@ -1,6 +1,7 @@
 package com.app.registration.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,4 +27,13 @@ public class CourseService {
 	public List<Course> findAllCourse() {
 		return crepo.findAll();
 	}
+	public Optional<Course> get(Integer id) {
+       // return repo.findById(id).get();
+		return crepo.findById(id);		
+    }
+	public void deleteCourse(Integer id) {
+        //repo.deleteById(id);
+		crepo.deleteById(id);
+    }
+	
 }
