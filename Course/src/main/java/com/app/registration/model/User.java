@@ -1,12 +1,16 @@
 package com.app.registration.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /*Entity is use because of repository so h2 database will be created according to the POJO*/
 @Entity
+@Table(name="User")
 public class User {
 	@Id
+	@GeneratedValue
 	private int id;
 	private String emailId;
 	private String userName;
