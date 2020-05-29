@@ -71,7 +71,13 @@ public class CourseController {
 //	}
 	
 	@DeleteMapping("/deleteCourse/{id}")
-	void deleteCourse(@PathVariable int id) {
-		cservice.deleteCourse(id);
+	public String deleteCourse(@PathVariable int id) {
+		try {
+			cservice.deleteCourse(id);
+			return "Course Deleted";
+		}catch(Exception e) {
+			return "Course Not found";
+		}
+		
 	}
 }
