@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
     this._service.loginUserFromRemote(this.user).subscribe(
       data => {
         console.log("responce recived");
+        localStorage.setItem('myuser', JSON.stringify(this.user));
         this._router.navigate(['/dashboard']);
       },
       error => {

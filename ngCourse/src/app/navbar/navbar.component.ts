@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../user';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  userdata:User=JSON.parse(localStorage.getItem('myuser'));
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.userdata)
   }
 
 }
