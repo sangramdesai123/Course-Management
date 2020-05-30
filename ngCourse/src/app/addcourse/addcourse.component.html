@@ -7,9 +7,15 @@
     <h1>{{msg}}</h1>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
+<div class="container " style="">
+    <div class="jumbotron " style="text-align: center">
+        <h2>Search for the Courses</h2>
+        <button class="btn btn-success" [routerLink]="['/dashboard']">
+            Search New Course
+        </button>
+    </div>
+    <div class="row col-md-offset-4">
+        <div class="col-md-6" >
             <form>
                 <fieldset>
 

@@ -1,11 +1,21 @@
 <br>
-<div class="container" class="col-md-6 col-md-offset-3">
-  <h4 style="text-align:center;color:blue">Login</h4>
-    <form #loginform = 'ngForm' (ngSubmit)="loginUser()">
+<div class="container" align="center" class="col-md-6 col-md-offset-3"
+style="background-color: #FFFFFF;
+position: absolute;
+left: 35%;
+    width: 400px;
+    height: 400px;
+    margin: 7em auto;
+    border-radius: 1.5em;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+"
+>
+  <p class="sign" >Sign in</p>
+    <form class="form1" #loginform = 'ngForm' (ngSubmit)="loginUser()">
         <small class="text-danger">{{msg}}</small>
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" class="form-control" placeholder="Enter email" name="email" [(ngModel)]='user.emailId' #email="ngModel"
+        <input  type="email" class="form-control" placeholder="Enter email" name="email" [(ngModel)]='user.emailId' #email="ngModel"
         pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" [class.is-invalid]="email.invalid && email.touched"
         required
         >
@@ -26,7 +36,8 @@
       <div class="checkbox">
         <label><input type="checkbox" name="remember"> Remember me</label>
       </div>
-      <button [disabled]="loginform.form.invalid" type="submit" class="btn btn-info">Login</button>
-      <span style="float:right" (click)="gotoregistration()">Not a member?<i class="btn btn-link">Register</i></span>
+      <button [disabled]="loginform.form.invalid" type="submit" class="btn btn-info " class="submit">Login</button>
+      <br>
+      <span style="text-align:center" (click)="gotoregistration()">Not a member?<i class="btn btn-link">Register</i></span>
     </form>
 </div>
