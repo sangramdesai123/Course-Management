@@ -5,6 +5,7 @@ import { LoginsuccessComponent } from './loginsuccess/loginsuccess.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddcourseComponent } from './addcourse/addcourse.component';
+import { TranningmatrialComponent } from './tranningmatrial/tranningmatrial.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:'registration',component:RegistrationComponent},
   {path:'dashboard',component:DashboardComponent},
   {path:'addcourse',component:AddcourseComponent},
+  {path:'tranning',component:TranningmatrialComponent},
 ];
 
 @NgModule({

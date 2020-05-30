@@ -6,6 +6,10 @@ import { from } from 'rxjs';
 import { RegistrationService } from '../registration.service';
 import { User } from '../user';
 import { Router } from '@angular/router';
+import { AuthService } from "angularx-social-login";
+import { GoogleLoginProvider } from "angularx-social-login";
+import { SocialUser } from "angularx-social-login";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,9 +18,28 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   user=new User();
   msg="";
-  constructor( private _service : RegistrationService, private _router : Router) { }
+  public myuser: SocialUser;
+  private loggedIn: boolean;
 
+  constructor( private _service : RegistrationService, private _router : Router,private authService: AuthService) { }
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+  
   ngOnInit(): void {
+    this.authService.authState.subscribe((user) => {
+      this.myuser = user;
+      this.loggedIn = (user != null);
+      if(this.loggedIn){
+        console.log("responce recived"+this.myuser);
+        const userdata=new User();
+        userdata.emailId=this.myuser.email;
+        userdata.userName=this.myuser.name;
+        localStorage.setItem('myuser', JSON.stringify(userdata));
+        localStorage.setItem('loginstatus', JSON.stringify(this.loggedIn));
+        this._router.navigate(['/dashboard']);
+      }
+    });
   }
 
   loginUser(){

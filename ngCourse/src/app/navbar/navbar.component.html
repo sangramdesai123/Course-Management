@@ -9,8 +9,13 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-            <a href="#" ><span class="glyphicon glyphicon-user" ></span> {{this.userdata.emailId}}</a>
+            <a ><span class="glyphicon glyphicon-user" ></span> {{this.userdata.emailId}}</a>
+            
         </li>
+        <li style="padding-top: 10px;;">
+          <button class="btn btn-danger" (click)="signOut()">SignOut</button>
+        </li>
+        
       </ul>
     </div>
   </nav>

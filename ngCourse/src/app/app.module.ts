@@ -11,7 +11,19 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RegistrationService } from './registration.service';
 import { AddcourseComponent } from './addcourse/addcourse.component';
-
+import { TranningmatrialComponent } from './tranningmatrial/tranningmatrial.component';
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("1065635505813-lb0ckfeml5ucrggnhbjnj0rudpjln3k3.apps.googleusercontent.com")
+  },
+]);
+export function provideConfig() {
+  return config;
+}
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,15 +32,23 @@ import { AddcourseComponent } from './addcourse/addcourse.component';
     LoginsuccessComponent,
     DashboardComponent,
     NavbarComponent,
-    AddcourseComponent
+    AddcourseComponent,
+    TranningmatrialComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SocialLoginModule
   ],
-  providers: [RegistrationService],
+  providers: [
+    RegistrationService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
