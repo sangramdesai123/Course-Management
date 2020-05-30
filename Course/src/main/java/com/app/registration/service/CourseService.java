@@ -35,5 +35,9 @@ public class CourseService {
         //repo.deleteById(id);
 		crepo.deleteById(id);
     }
+
+	public List<Course> fetchCourseByCreator(String creator) {
+		return crepo.findByCreator(creator);
+	}
 	
 }

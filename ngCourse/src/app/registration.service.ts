@@ -23,8 +23,8 @@ export class RegistrationService {
     return this._http.get<any>("http://localhost:8080/getcourse");
   }
 
-  public getCourseById(id){
-    return this._http.get<any>("http://localhost:8080/getcourse/"+id);
+  public getCourseByCreator(creator){
+    return this._http.get<any>("http://localhost:8080/getcourse/"+creator);
   }
   
   public deleteCourse(id){

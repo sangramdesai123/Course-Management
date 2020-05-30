@@ -31,7 +31,7 @@ public class CourseController {
 				return "Course with "+tempskill+" id is already exist";
 			}
 		}
-		Course courseObj= cservice.saveCourse(course);
+		 cservice.saveCourse(course);
 		return "Course added Successfully";
 	}
 	@GetMapping("/getcourse")
@@ -42,17 +42,27 @@ public class CourseController {
 		return (List<Course>) cservice.findAllCourse();
 	}
 	
-	@GetMapping("/getcourse/{id}")
+//	@GetMapping("/getcourse/{id}")
+//	@CrossOrigin(origins = "http://localhost:4200")
+//	public Optional<Course>  getOne(@PathVariable Integer id) {
+//	    try {
+//	        Optional<Course> course = cservice.get(id);
+//	        return course;
+//	    } catch (Exception e) {
+//	        return null;
+//	    }      
+//	}
+	
+	@GetMapping("/getcourse/{creator}")
 	@CrossOrigin(origins = "http://localhost:4200")
-	public Optional<Course>  getOne(@PathVariable Integer id) {
+	public List<Course>  getBycreator(@PathVariable String creator) {
 	    try {
-	        Optional<Course> course = cservice.get(id);
+	    	List<Course> course = cservice.fetchCourseByCreator(creator);
 	        return course;
 	    } catch (Exception e) {
 	        return null;
 	    }      
 	}
-	
 //	@PutMapping("/updatecourse/{id}")
 //	public Course updatecourse(@RequestBody Course course, @PathVariable Integer id) {
 //	    try {

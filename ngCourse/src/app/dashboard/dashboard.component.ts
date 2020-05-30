@@ -10,6 +10,7 @@ export class DashboardComponent implements OnInit {
 
   courselist:any;
   id:any;
+  creator:String;
   constructor(private _service: RegistrationService) { }
 
   public deleteCourse(id:number){
@@ -17,8 +18,8 @@ export class DashboardComponent implements OnInit {
     resp.subscribe((data)=> this.courselist=data);
   }
 
-  public searchCoursebyId(){
-    let resp=this._service.getCourseById(this.id);
+  public searchCoursebyCreator(){
+    let resp=this._service.getCourseByCreator(this.creator);
     resp.subscribe((data)=> this.courselist=data);
   }
 
