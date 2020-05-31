@@ -6,6 +6,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddcourseComponent } from './addcourse/addcourse.component';
 import { TranningmatrialComponent } from './tranningmatrial/tranningmatrial.component';
+import { AddmatrialComponent } from './addmatrial/addmatrial.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:'dashboard',component:DashboardComponent},
   {path:'addcourse',component:AddcourseComponent},
   {path:'tranning',component:TranningmatrialComponent},
+  {path:'addmatrial',component:AddmatrialComponent},
 ];
 
 @NgModule({
