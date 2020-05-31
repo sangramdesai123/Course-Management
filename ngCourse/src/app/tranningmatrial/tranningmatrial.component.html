@@ -32,7 +32,7 @@
         
         <div class="row col-md-10 col-md-offset-1 custyle">
             <h2>List Of All Tranning Matrial </h2>
-            <table class="table table-bordered table-striped custab">
+            <table class="table table-bordered table-striped custab" >
             <thead>
                 <tr>
                     <th>Course Name</th>
@@ -45,9 +45,9 @@
             <tbody>
                 <tr *ngFor="let matrial of matriallist">
                     <td>{{matrial.course}}</td>
-                    <td>{{matrial.recording}}</td>
-                    <td>{{matrial.ppt}}</td>
-                    <td>{{matrial.assignment}}</td>
+                    <td><a href="{{matrial.recording}}">{{matrial.recording}}</a></td>
+                    <td><a href="{{matrial.ppt}}">{{matrial.ppt}}</a></td>
+                    <td><a href="{{matrial.assignment}}">{{matrial.assignment}}</a></td>
                     <td class="text-center"><button class="btn btn-danger btn-xs" (click)="deleteMatrial(matrial.course)"><span class="glyphicon glyphicon-remove" ></span> Delete</button></td>
                 </tr>
             </tbody>
