@@ -14,6 +14,7 @@ import { AddcourseComponent } from './addcourse/addcourse.component';
 import { TranningmatrialComponent } from './tranningmatrial/tranningmatrial.component';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
+import { TrainingService } from './training.service';
 let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -44,6 +45,7 @@ export function provideConfig() {
   ],
   providers: [
     RegistrationService,
+    TrainingService,
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TrainingService } from '../training.service';
 
 @Component({
   selector: 'app-tranningmatrial',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TranningmatrialComponent implements OnInit {
   matriallist:any;
-  constructor() { }
+  constructor(private _service:TrainingService) { }
+
+  public deleteMatrial(course:string){
+    let resp=this._service.deleteMatrial(course);
+    resp.subscribe((data)=> this.matriallist=data);
+  }
 
   ngOnInit(): void {
+    let resp=this._service.getAllmatrial();
+    resp.subscribe((data)=> this.matriallist=data);
   }
 
 }
