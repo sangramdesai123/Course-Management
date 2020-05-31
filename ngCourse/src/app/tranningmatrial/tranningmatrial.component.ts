@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tranningmatrial.component.css']
 })
 export class TranningmatrialComponent implements OnInit {
-
+  matriallist:any;
   constructor() { }
 
   ngOnInit(): void {

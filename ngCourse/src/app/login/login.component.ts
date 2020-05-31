@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
       data => {
         console.log("responce recived");
         localStorage.setItem('myuser', JSON.stringify(this.user));
+        localStorage.setItem('loginstatus', JSON.stringify(true));
         this._router.navigate(['/dashboard']);
       },
       error => {

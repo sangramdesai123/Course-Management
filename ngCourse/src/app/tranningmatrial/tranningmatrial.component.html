@@ -1,4 +1,12 @@
 <app-navbar></app-navbar>
+
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
 <div class="container">
     <div class="jumbotron " style="text-align: center">
         <h2>Tranning Matrial</h2>
@@ -6,4 +14,45 @@
             Create New Course
         </button>
     </div>
+    <div class="row col-md-offset-2">
+        <div id="custom-search-input">
+            <div class="input-group col-md-8" style="text-align: center">
+                <input type="text" class="search-query form-control" placeholder="Search With Course Skill"  name="creator" [(ngModel)]="creator"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="button" (click)="searchCoursebyCreator()">
+                        <span class=" glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+            
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        
+        <div class="row col-md-10 col-md-offset-1 custyle">
+            <h2>List Of All Tranning Matrial </h2>
+            <table class="table table-bordered table-striped custab">
+            <thead>
+                <tr>
+                    <th>Course Name</th>
+                    <th>Recording Link</th>
+                    <th>PPT link</th>
+                    <th>Assignment Link</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let matrial of matriallist">
+                    <td>{{matrial.course}}</td>
+                    <td>{{matrial.recording}}</td>
+                    <td>{{matrial.ppt}}</td>
+                    <td>{{matrial.assignment}}</td>
+                    <td class="text-center"><button class="btn btn-danger btn-xs" (click)="deleteMatrial(matrial.course)"><span class="glyphicon glyphicon-remove" ></span> Delete</button></td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+
 </div>
