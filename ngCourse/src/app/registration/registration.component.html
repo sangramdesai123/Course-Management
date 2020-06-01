@@ -26,11 +26,11 @@ left: 35%;
       </div>
       <div class="form-group">
         <label for="Username">User Name:</label>
-        <input type="text" class="form-control" placeholder="Enter User Name" name="username" [(ngModel)]='user.username' #username="ngModel" required
-        [class.is-invalid]="username.invalid && username.touched">
+        <input type="text" class="form-control" placeholder="Enter User Name" name="userName" [(ngModel)]='user.userName' #userName="ngModel" required
+        [class.is-invalid]="userName.invalid && userName.touched">
 
-        <div *ngIf="username.errors && (username.invalid && username.touched)">
-            <small class="text-danger" *ngIf="username.errors.required" >User Name is required</small>
+        <div *ngIf="userName.errors && (userName.invalid && userName.touched)">
+            <small class="text-danger" *ngIf="userName.errors.required" >User Name is required</small>
         </div>
      </div>
      

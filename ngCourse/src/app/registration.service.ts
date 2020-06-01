@@ -15,6 +15,10 @@ export class RegistrationService {
     return this._http.post<any>("http://localhost:8080/login",user);
   }
 
+  public registerUserFromRemote(user:User):Observable<any>{
+    return this._http.post<any>("http://localhost:8080/registeruser",user);
+  }
+
   public addCourse(course:Course):Observable<any>{
     return this._http.post<any>("http://localhost:8080/addcourse",course,{responseType:'text' as 'json'});
   }
