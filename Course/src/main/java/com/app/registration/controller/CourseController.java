@@ -3,6 +3,8 @@ package com.app.registration.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,6 +20,9 @@ import com.app.registration.service.CourseService;
 
 @RestController
 public class CourseController {
+	
+	Logger logger=LoggerFactory.getLogger(CourseController.class);
+	
 	@Autowired
 	private CourseService cservice;
 	
@@ -28,18 +33,19 @@ public class CourseController {
 		if(tempskill !=null && !"".equals(tempskill)) {
 			Course courseObj= cservice.fetchCourseBySkill(tempskill);
 			if(courseObj != null) {
+				logger.info(" addcourses path call");
 				return "Course with "+tempskill+" id is already exist";
 			}
 		}
-		 cservice.saveCourse(course);
+		cservice.saveCourse(course);
 		return "Course added Successfully";
 	}
 	@GetMapping("/getcourse")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public List<Course> getCourse() {
-		//if()
-		//return "hello";
+		logger.info(" getcourse path call");
 		return (List<Course>) cservice.findAllCourse();
+		
 	}
 	
 //	@GetMapping("/getcourse/{id}")
@@ -60,6 +66,7 @@ public class CourseController {
 	    	List<Course> course = cservice.fetchCourseByCreator(creator);
 	        return course;
 	    } catch (Exception e) {
+	    	logger.error(" /getcourse/{creator} path call has exception"+e.getMessage());
 	        return null;
 	    }      
 	}
@@ -88,6 +95,7 @@ public class CourseController {
 			cservice.deleteCourse(id);
 			 return (List<Course>) cservice.findAllCourse();
 		}catch(Exception e) {
+			logger.error(" /deleteCourse/{id} path call has exception"+e.getMessage());
 			return null;
 		}
 		
