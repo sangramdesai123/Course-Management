@@ -1,5 +1,7 @@
 package com.app.registration.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +17,7 @@ public class RegistrationController {
 	/*
 	 * when user submit the form this will directly function will be map 
 	 */
-	
+	Logger logger=LoggerFactory.getLogger(CourseController.class);
 	@Autowired
 	private RegistrationService service;
 	@PostMapping("/registeruser")
@@ -25,6 +27,7 @@ public class RegistrationController {
 		if(tempEmailId !=null && !"".equals(tempEmailId)) {
 			User userObj=service.fetchUserByEmailId(tempEmailId);
 			if(userObj != null) {
+				logger.info(" registeruser path call email id exist");
 				throw new Exception("User with "+tempEmailId+" id is already exist");
 			}
 		}
@@ -43,6 +46,7 @@ public class RegistrationController {
 			userObj=service.fetchUserByEmailIdAndPassword(tempEmailId, tempPass);
 		}
 		if(userObj==null) {
+			logger.info(" login path call Bad credentational");
 			throw new Exception("Bad credentational");
 		}
 		return userObj;
