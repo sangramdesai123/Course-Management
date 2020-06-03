@@ -5,20 +5,19 @@ import { Matrial } from '../Matrial';
 @Component({
   selector: 'app-addmatrial',
   templateUrl: './addmatrial.component.html',
-  styleUrls: ['./addmatrial.component.css']
+  styleUrls: ['./addmatrial.component.css'],
 })
 export class AddmatrialComponent implements OnInit {
+  matrial: Matrial = new Matrial();
+  msg: any;
 
-  matrial:Matrial=new Matrial();
-  msg:any;
+  constructor(private _service: TrainingService) {}
 
-  constructor(private _service:TrainingService) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  public addNewMatrial() {
+    this._service
+      .addCourse(this.matrial)
+      .subscribe((data) => (this.msg = data));
   }
-
-  public addNewMatrial(){
-    this._service.addCourse(this.matrial).subscribe((data)=>this.msg=data);
-  }
-
 }

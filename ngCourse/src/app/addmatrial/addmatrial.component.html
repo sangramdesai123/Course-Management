@@ -16,37 +16,38 @@
         <h3>{{msg}}</h3>
     </div>
     <div class="row col-md-offset-4">
-        
-        <div class="col-md-6" >
+
+        <div class="col-md-6">
             <form>
                 <fieldset>
 
                     <div class="form-group">
-                        <label for="Course"><span class="req"></span>Course Name:  </label>
+                        <label for="Course"><span class="req"></span>Course Name: </label>
                         <input required type="text" [(ngModel)]="matrial.course" name="course" id="course"
-                            class="form-control "  placeholder="Enter your Course Name..." />
+                            class="form-control " placeholder="Enter your Course Name..." />
                     </div>
 
                     <div class="form-group">
-                        <label for="Recording"><span class="req"></span>Course Recording:  </label>
+                        <label for="Recording"><span class="req"></span>Course Recording: </label>
                         <input required type="text" [(ngModel)]="matrial.recording" name="recording" id="recording"
-                            class="form-control"  placeholder="Enter your Course Recording link..." />
+                            class="form-control" placeholder="Enter your Course Recording link..." />
                     </div>
 
                     <div class="form-group">
-                        <label for="PPT"><span class="req"></span>Course PPT Link:  </label>
-                        <input required type="text" [(ngModel)]="matrial.ppt" name="ppt" id="ppt"
-                            class="form-control" placeholder="Enter PPT link..." />
+                        <label for="PPT"><span class="req"></span>Course PPT Link: </label>
+                        <input required type="text" [(ngModel)]="matrial.ppt" name="ppt" id="ppt" class="form-control"
+                            placeholder="Enter PPT link..." />
                     </div>
                     <div class="form-group">
-                        <label for="Assignment"><span class="req"></span>Course Assignment:  </label>
+                        <label for="Assignment"><span class="req"></span>Course Assignment: </label>
                         <input required type="text" [(ngModel)]="matrial.assignment" name="assignment" id="assignment"
-                            class="form-control"  placeholder="Enter Course Assignment link..." />
+                            class="form-control" placeholder="Enter Course Assignment link..." />
                     </div>
 
 
                     <div class="form-group">
-                        <input class="btn btn-success" type="submit" name="submit_reg" value="Add Matrial" (click)="addNewMatrial()">
+                        <input class="btn btn-success" type="submit" name="submit_reg" value="Add Matrial"
+                            (click)="addNewMatrial()">
                     </div>
                 </fieldset>
             </form><!-- ends register form -->

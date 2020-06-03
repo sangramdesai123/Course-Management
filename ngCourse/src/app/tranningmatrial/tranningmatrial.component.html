@@ -17,40 +17,43 @@
     <div class="row col-md-offset-2">
         <div id="custom-search-input">
             <div class="input-group col-md-8" style="text-align: center">
-                <input type="text" class="search-query form-control" placeholder="Search Course Matrial "  name="course" [(ngModel)]="course"/>
+                <input type="text" class="search-query form-control" placeholder="Search Course Matrial " name="course"
+                    [(ngModel)]="course" />
                 <span class="input-group-btn">
                     <button class="btn btn-info" type="button" (click)="searchMatrialbyCourse()">
                         <span class=" glyphicon glyphicon-search"></span>
                     </button>
                 </span>
             </div>
-            
+
         </div>
     </div>
     <br>
     <div class="container">
-        
+
         <div class="row col-md-10 col-md-offset-1 custyle">
             <h2>List Of All Tranning Matrial </h2>
-            <table class="table table-bordered table-striped custab" >
-            <thead>
-                <tr>
-                    <th>Course Name</th>
-                    <th>Recording Link</th>
-                    <th>PPT link</th>
-                    <th>Assignment Link</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let matrial of matriallist">
-                    <td>{{matrial.course}}</td>
-                    <td><a href="{{matrial.recording}}">{{matrial.recording}}</a></td>
-                    <td><a href="{{matrial.ppt}}">{{matrial.ppt}}</a></td>
-                    <td><a href="{{matrial.assignment}}">{{matrial.assignment}}</a></td>
-                    <td class="text-center"><button class="btn btn-danger btn-xs" (click)="deleteMatrial(matrial.course)"><span class="glyphicon glyphicon-remove" ></span> Delete</button></td>
-                </tr>
-            </tbody>
+            <table class="table table-bordered table-striped custab">
+                <thead>
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Recording Link</th>
+                        <th>PPT link</th>
+                        <th>Assignment Link</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let matrial of matriallist">
+                        <td>{{matrial.course}}</td>
+                        <td><a href="{{matrial.recording}}">{{matrial.recording}}</a></td>
+                        <td><a href="{{matrial.ppt}}">{{matrial.ppt}}</a></td>
+                        <td><a href="{{matrial.assignment}}">{{matrial.assignment}}</a></td>
+                        <td class="text-center"><button class="btn btn-danger btn-xs"
+                                (click)="deleteMatrial(matrial.course)"><span class="glyphicon glyphicon-remove"></span>
+                                Delete</button></td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>

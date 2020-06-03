@@ -1,6 +1,5 @@
 <br>
-<div class="container" align="center" class="col-md-6 col-md-offset-3"
-style="background-color: #FFFFFF;
+<div class="container" align="center" class="col-md-6 col-md-offset-3" style="background-color: #FFFFFF;
 position: absolute;
 left: 35%;
     width: 400px;
@@ -8,47 +7,46 @@ left: 35%;
     margin: 7em auto;
     border-radius: 1.5em;
     box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
-"
->
-  <p class="sign" >Register Here</p>
-    <form class="form1" #registerform = 'ngForm' (ngSubmit)="registerUser()">
-        <small class="text-danger">{{msg}}</small>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input  type="email" class="form-control" placeholder="Enter email" name="email" [(ngModel)]='user.emailId' #email="ngModel"
-        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" [class.is-invalid]="email.invalid && email.touched"
-        required
-        >
-        <div *ngIf="email.errors && (email.invalid && email.touched)">
-            <small class="text-danger" *ngIf="email.errors.required" >Email is Required field</small>
-            <small class="text-danger" *ngIf="email.errors.pattern" >Enter Valide Email</small>
-        </div>
+">
+  <p class="sign">Register Here</p>
+  <form class="form1" #registerform='ngForm' (ngSubmit)="registerUser()">
+    <small class="text-danger">{{msg}}</small>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" placeholder="Enter email" name="email" [(ngModel)]='user.emailId'
+        #email="ngModel" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+        [class.is-invalid]="email.invalid && email.touched" required>
+      <div *ngIf="email.errors && (email.invalid && email.touched)">
+        <small class="text-danger" *ngIf="email.errors.required">Email is Required field</small>
+        <small class="text-danger" *ngIf="email.errors.pattern">Enter Valide Email</small>
       </div>
-      <div class="form-group">
-        <label for="Username">User Name:</label>
-        <input type="text" class="form-control" placeholder="Enter User Name" name="userName" [(ngModel)]='user.userName' #userName="ngModel" required
-        [class.is-invalid]="userName.invalid && userName.touched">
+    </div>
+    <div class="form-group">
+      <label for="Username">User Name:</label>
+      <input type="text" class="form-control" placeholder="Enter User Name" name="userName" [(ngModel)]='user.userName'
+        #userName="ngModel" required [class.is-invalid]="userName.invalid && userName.touched">
 
-        <div *ngIf="userName.errors && (userName.invalid && userName.touched)">
-            <small class="text-danger" *ngIf="userName.errors.required" >User Name is required</small>
-        </div>
-     </div>
-     
-      <div class="form-group">
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" placeholder="Enter password" name="password" [(ngModel)]='user.password' #password="ngModel" required
+      <div *ngIf="userName.errors && (userName.invalid && userName.touched)">
+        <small class="text-danger" *ngIf="userName.errors.required">User Name is required</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" placeholder="Enter password" name="password"
+        [(ngModel)]='user.password' #password="ngModel" required
         [class.is-invalid]="password.invalid && password.touched">
 
-        <div *ngIf="password.errors && (password.invalid && password.touched)">
-            <small class="text-danger" *ngIf="password.errors.required" >Password is required</small>
-        </div>
-     </div>
-      <div class="checkbox">
-        <label><input type="checkbox" name="remember"> Remember me</label>
+      <div *ngIf="password.errors && (password.invalid && password.touched)">
+        <small class="text-danger" *ngIf="password.errors.required">Password is required</small>
       </div>
-      <button [disabled]="registerform.form.invalid" type="submit" class="btn btn-info " class="submit">Register</button>
-      
-      <br>
-      <span style="text-align:center" (click)="gotologin()">Already a member?<i class="btn btn-link">Login</i></span>
-    </form>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" name="remember"> Remember me</label>
+    </div>
+    <button [disabled]="registerform.form.invalid" type="submit" class="btn btn-info " class="submit">Register</button>
+
+    <br>
+    <span style="text-align:center" (click)="gotologin()">Already a member?<i class="btn btn-link">Login</i></span>
+  </form>
 </div>

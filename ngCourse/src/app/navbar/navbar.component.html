@@ -1,22 +1,21 @@
 <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">AU Course Management</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="/dashboard">Home</a></li>
-        <li><a href="/tranning">Tranning Matrial</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-            <a ><span class="glyphicon glyphicon-user" ></span> {{this.userdata.emailId}}</a>
-            
-        </li>
-        <li style="padding-top: 10px;;">
-          <button class="btn btn-danger" (click)="signOut()">SignOut</button>
-        </li>
-        
-      </ul>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">AU Course Management</a>
     </div>
-  </nav>
-    
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/dashboard">Home</a></li>
+      <li><a href="/tranning">Tranning Matrial</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a><span class="glyphicon glyphicon-user"></span> {{this.userdata.emailId}}</a>
+
+      </li>
+      <li style="padding-top: 10px;;">
+        <button class="btn btn-danger" (click)="signOut()">SignOut</button>
+      </li>
+
+    </ul>
+  </div>
+</nav>

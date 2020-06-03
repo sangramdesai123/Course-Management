@@ -16,52 +16,53 @@
         <h3>{{msg}}</h3>
     </div>
     <div class="row col-md-offset-4">
-        
-        <div class="col-md-6" >
+
+        <div class="col-md-6">
             <form>
                 <fieldset>
 
                     <div class="form-group">
-                        <label for="Name"><span class="req"></span>Creator Name:  </label>
+                        <label for="Name"><span class="req"></span>Creator Name: </label>
                         <input required type="text" [(ngModel)]="course.creator" name="name" id="name"
-                            class="form-control "  placeholder="Enter your Creator Name..." />
+                            class="form-control " placeholder="Enter your Creator Name..." />
                     </div>
 
                     <div class="form-group">
-                        <label for="Description"><span class="req"></span>Course Description:  </label>
+                        <label for="Description"><span class="req"></span>Course Description: </label>
                         <input required type="text" [(ngModel)]="course.description" name="description" id="description"
-                            class="form-control"  placeholder="Enter your Course Description..." />
+                            class="form-control" placeholder="Enter your Course Description..." />
                     </div>
 
                     <div class="form-group">
-                        <label for="Skill"><span class="req"></span>Skill:  </label>
+                        <label for="Skill"><span class="req"></span>Skill: </label>
                         <input required type="text" [(ngModel)]="course.skill" name="skill" id="skill"
                             class="form-control" placeholder="Enter skill..." />
                     </div>
                     <div class="form-group">
-                        <label for="Prerequisite"><span class="req"></span>Course Prerequisite:  </label>
-                        <input required type="text" [(ngModel)]="course.prerequisite" name="prerequisite" id="prerequisite"
-                            class="form-control"  placeholder="Enter Course prerequisite..." />
+                        <label for="Prerequisite"><span class="req"></span>Course Prerequisite: </label>
+                        <input required type="text" [(ngModel)]="course.prerequisite" name="prerequisite"
+                            id="prerequisite" class="form-control" placeholder="Enter Course prerequisite..." />
                     </div>
                     <div class="form-group">
-                        <label for="Date"><span class="req"></span>Course Date:  </label>
+                        <label for="Date"><span class="req"></span>Course Date: </label>
                         <input required type="text" [(ngModel)]="course.lastUpdated" name="lastUpdated" id="lastUpdated"
-                            class="form-control"  placeholder="Enter Course Date..." />
+                            class="form-control" placeholder="Enter Course Date..." />
                     </div>
                     <div class="form-group">
-                        <label for="Feedback"><span class="req"></span>Course Feedback:  </label>
+                        <label for="Feedback"><span class="req"></span>Course Feedback: </label>
                         <input required type="text" [(ngModel)]="course.feedback" name="feedback" id="feedback"
-                            class="form-control"  placeholder="Enter Course Feedback..." />
+                            class="form-control" placeholder="Enter Course Feedback..." />
                     </div>
                     <div class="form-group">
-                        <label for="Ratting"><span class="req"></span>Course Ratting:  </label>
+                        <label for="Ratting"><span class="req"></span>Course Ratting: </label>
                         <input required type="text" [(ngModel)]="course.ratting" name="ratting" id="ratting"
-                            class="form-control"  placeholder="Enter Course ratting..." />
+                            class="form-control" placeholder="Enter Course ratting..." />
                     </div>
 
 
                     <div class="form-group">
-                        <input class="btn btn-success" type="submit" name="submit_reg" value="Add New Course" (click)="addNewCourse()">
+                        <input class="btn btn-success" type="submit" name="submit_reg" value="Add New Course"
+                            (click)="addNewCourse()">
                     </div>
                 </fieldset>
             </form><!-- ends register form -->
