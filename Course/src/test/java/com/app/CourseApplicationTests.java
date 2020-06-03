@@ -215,11 +215,7 @@ class CourseApplicationTests {
 	    
 		System.out.println("login hit ");
 	}
-//	@Before(value = "")
-//	private void setUp() {
-//		mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
-//	}
-//
+
 //	@Test
 //	public void saveCourseTest() throws Exception {
 //		Course c = new Course(1, "Pankti", "RDBMS", "RDBMS", "Nothing", "29-05-2020", "This is best course on RDBMS",
