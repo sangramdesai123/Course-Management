@@ -14,6 +14,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -24,6 +25,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import com.app.registration.model.Course;
 import com.app.registration.model.TrainingMaterial;
 import com.app.registration.model.User;
+import com.app.registration.repository.CourseRepository;
+import com.app.registration.repository.RegistrationRepository;
+import com.app.registration.repository.TrainingMatrialRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
@@ -35,14 +39,19 @@ class CourseApplicationTestsITTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-	
+	@MockBean
+	TrainingMatrialRepository trepo;
+	@MockBean
+	CourseRepository crepo;
+	@MockBean
+	RegistrationRepository rrepo;
 	/*
 	 * Integration Test for For Course
 	 */
 	
+	
 	@Test
 	public void getAllCourseItTest() throws Exception {
-
 		MvcResult mvcResult = mockMvc
 				.perform(MockMvcRequestBuilders.get("/getcourse").accept(MediaType.APPLICATION_JSON)).andReturn();
 
@@ -88,6 +97,31 @@ class CourseApplicationTestsITTest {
 		
 	}
 	
+	@Test
+	public void updateCourseItsTest() throws Exception {
+		Course mycourse = new Course();
+		
+		mycourse.setCreator("sangram");
+		mycourse.setId(1);
+		mycourse.setDescription("hi");
+		mycourse.setFeedback("feedback");
+		mycourse.setlastUpdated("20-5-2020");
+		ObjectMapper objectMapper = new ObjectMapper();
+		String json = objectMapper.writeValueAsString(mycourse);
+		MvcResult mvcResult = mockMvc.perform(
+				MockMvcRequestBuilders.put("/updatecourse").contentType(MediaType.APPLICATION_JSON_VALUE).content(json))
+				.andReturn();
+		System.out.println(mvcResult);
+		
+	}
+	@Test
+	public void updateCourseIt2Test() throws Exception {
+		
+		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.put("/updatecourse/2")).andReturn();
+		int status = mvcResult.getResponse().getStatus();
+		
+	}
+	
 	/*
 	 * Integration Test for For TrainingMatrial controller
 	 */
@@ -130,9 +164,13 @@ class CourseApplicationTestsITTest {
 
 	@Test
 	public void deleteTrainingMatrialItTest() throws Exception {
+				
 		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.delete("/deletematrial/Java")).andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(200, status);
+		String content = mvcResult.getResponse().getContentAsString();
+		System.out.println("delete course testhit " + content);
+		Mockito.verify(trepo).findAll();
 	}
 	
 	/*
