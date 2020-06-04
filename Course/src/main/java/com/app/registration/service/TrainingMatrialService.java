@@ -23,9 +23,9 @@ public class TrainingMatrialService {
 		return trepo.findAll();
 	}
 	
-	public Optional<TrainingMaterial> findTrainingMaterial(String course) {
-        return trepo.findById(course);
-    }
+//	public Optional<TrainingMaterial> findTrainingMaterial(String course) {
+//        return trepo.findById(course);
+//    }
 	
 	public void deleteTrainingMaterial(String course) {
         trepo.deleteById(course);

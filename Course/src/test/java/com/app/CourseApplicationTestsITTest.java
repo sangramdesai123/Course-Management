@@ -52,6 +52,10 @@ class CourseApplicationTestsITTest {
 	@Test
 	public void postCourseItTest() throws Exception {
 		Course mycourse = new Course();
+		/*covering all branch statement*/
+		Course test = new Course(11,"a","a","a","a","a","a",1);
+		System.out.println(test);
+		
 		mycourse.setCreator("sangram");
 		mycourse.setId(1);
 		mycourse.setDescription("hi");

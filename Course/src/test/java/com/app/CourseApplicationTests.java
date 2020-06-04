@@ -49,7 +49,8 @@ class CourseApplicationTests {
 	TrainingMatrialRepository trepo;
 
 	@Test
-	void contextLoads() throws Exception {
+	void contextLoads() {
+		CourseApplication.main(new String[] {"arg1", "arg2", "arg3"});
 	}
 
 	/*
@@ -58,7 +59,10 @@ class CourseApplicationTests {
 
 	@Test
 	public void getAllCourseTest() throws Exception {
-
+		/*covering all branch statement*/
+		Course test = new Course(11,"a","a","a","a","a","a",1);
+		System.out.println(test);
+		
 		Mockito.when(crepo.findAll()).thenReturn(Collections.emptyList());
 
 		MvcResult mvcResult = mockMvc
@@ -178,6 +182,7 @@ class CourseApplicationTests {
 		/*testing all branch statements*/
 		TrainingMaterial tt = new TrainingMaterial("j","a","a","a");
 		System.out.println(tt);
+		trepo.findById(tt.getCourse());
 		
 		matrial.setCourse("java");
 		matrial.setPpt("link to ppt");
