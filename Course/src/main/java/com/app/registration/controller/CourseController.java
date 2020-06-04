@@ -20,34 +20,35 @@ import com.app.registration.service.CourseService;
 
 @RestController
 public class CourseController {
-	
-	Logger logger=LoggerFactory.getLogger(CourseController.class);
-	
+
+	Logger logger = LoggerFactory.getLogger(CourseController.class);
+
 	@Autowired
 	private CourseService cservice;
-	
+
 	@PostMapping("/addcourse")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public String addCourse(@RequestBody Course course) throws Exception {
-		String tempskill= course.getSkill();
-		if(tempskill !=null && !"".equals(tempskill)) {
-			Course courseObj= cservice.fetchCourseBySkill(tempskill);
-			if(courseObj != null) {
+		String tempskill = course.getSkill();
+		if (tempskill != null && !"".equals(tempskill)) {
+			Course courseObj = cservice.fetchCourseBySkill(tempskill);
+			if (courseObj != null) {
 				logger.info(" addcourses path call");
-				return "Course with "+tempskill+" id is already exist";
+				return "Course with " + tempskill + " id is already exist";
 			}
 		}
 		cservice.saveCourse(course);
 		return "Course added Successfully";
 	}
+
 	@GetMapping("/getcourse")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public List<Course> getCourse() {
 		logger.info(" getcourse path call");
 		return (List<Course>) cservice.findAllCourse();
-		
+
 	}
-	
+
 //	@GetMapping("/getcourse/{id}")
 //	@CrossOrigin(origins = "http://localhost:4200")
 //	public Optional<Course>  getOne(@PathVariable Integer id) {
@@ -58,46 +59,36 @@ public class CourseController {
 //	        return null;
 //	    }      
 //	}
-	
+
 	@GetMapping("/getcourse/{creator}")
 	@CrossOrigin(origins = "http://localhost:4200")
-	public List<Course>  getBycreator(@PathVariable String creator) {
-	    try {
-	    	List<Course> course = cservice.fetchCourseByCreator(creator);
-	        return course;
-	    } catch (Exception e) {
-	    	logger.error(" /getcourse/{creator} path call has exception"+e.getMessage());
-	        return null;
-	    }      
+	public List<Course> getBycreator(@PathVariable String creator) {
+		try {
+			List<Course> course = cservice.fetchCourseByCreator(creator);
+			return course;
+		} catch (Exception e) {
+			logger.error(" /getcourse/{creator} path call has exception" + e.getMessage());
+			return null;
+		}
 	}
-//	@PutMapping("/updatecourse/{id}")
-//	public Course updatecourse(@RequestBody Course course, @PathVariable Integer id) {
-//	    try {
-//	    	Optional<Course> existCourse =null;
-//	        existCourse = cservice.get(id);
-//	        existCourse.setCreator(course.getCreator());
-//	        existCourse.setDescription(course.getDescription());
-//	        existCourse.setSkill(course.getSkill());
-//	        existCourse.setPrerequisite(course.getPrerequisite());
-//	        existCourse.setFeedback(course.getFeedback());
-//	        existCourse.setRatting(course.getRatting());
-//	        cservice.saveCourse(existCourse);
-//	        return course;
-//	    } catch (Exception e) {
-//	        return null;
-//	    }      
-//	}
-	
+
+	@PutMapping("/updatecourse")
+	@CrossOrigin(origins = "http://localhost:4200")
+	public Course updatecourse(@RequestBody Course course) {
+		System.out.println("update course "+course);
+		return cservice.updateCourse(course);
+	}
+
 	@DeleteMapping("/deleteCourse/{id}")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public List<Course> deleteCourse(@PathVariable int id) {
 		try {
 			cservice.deleteCourse(id);
-			 return (List<Course>) cservice.findAllCourse();
-		}catch(Exception e) {
-			logger.error(" /deleteCourse/{id} path call has exception"+e.getMessage());
+			return (List<Course>) cservice.findAllCourse();
+		} catch (Exception e) {
+			logger.error(" /deleteCourse/{id} path call has exception" + e.getMessage());
 			return null;
 		}
-		
+
 	}
 }

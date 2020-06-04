@@ -40,4 +40,16 @@ public class CourseService {
 		return crepo.findByCreator(creator);
 	}
 	
+	public Course updateCourse(Course c) {
+		Course exist_course=crepo.findById(c.getId()).orElse(null);
+		exist_course.setCreator(c.getCreator());
+		exist_course.setDescription(c.getDescription());
+		exist_course.setFeedback(c.getFeedback());
+		exist_course.setlastUpdated(c.getlastUpdated());
+		exist_course.setPrerequisite(c.getPrerequisite());
+		exist_course.setSkill(c.getSkill());
+		return crepo.save(exist_course);
+	}
+	
+	
 }
