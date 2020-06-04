@@ -23,6 +23,15 @@ export class RegistrationService {
       responseType: 'text' as 'json',
     });
   }
+  
+  public updateCourse(course: Course): Observable<any> {
+    return this._http.put<any>('http://localhost:8080/updatecourse', course, {
+      responseType: 'text' as 'json',
+    });
+  }
+  public getCourse(id) {
+    return this._http.get<any>('http://localhost:8080/updatecourse/'+id);
+  }
 
   public getAllCourse() {
     return this._http.get<any>('http://localhost:8080/getcourse');

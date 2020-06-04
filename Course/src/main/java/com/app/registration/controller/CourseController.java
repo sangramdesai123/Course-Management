@@ -71,12 +71,32 @@ public class CourseController {
 			return null;
 		}
 	}
+	
+	@GetMapping("/updatecourse/{id}")
+	@CrossOrigin(origins = "http://localhost:4200")
+	public Optional<Course> getById(@PathVariable Integer id) {
+		try {
+			Optional<Course> course = cservice.get(id);
+			return course;
+		} catch (Exception e) {
+			logger.error(" /updatecourse/{id} path call has exception" + e.getMessage());
+			return null;
+		}
+	}
 
 	@PutMapping("/updatecourse")
 	@CrossOrigin(origins = "http://localhost:4200")
-	public Course updatecourse(@RequestBody Course course) {
+	public String updatecourse(@RequestBody Course course) {
 		System.out.println("update course "+course);
-		return cservice.updateCourse(course);
+		try {
+			cservice.updateCourse(course);
+			return "Course Updated";
+		}catch(Exception e) {
+			logger.error(" /dupdateCourse path call has exception" + e.getMessage());
+			return "Updated Failed !!";
+		}
+		
+		
 	}
 
 	@DeleteMapping("/deleteCourse/{id}")

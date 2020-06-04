@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'addcourse', component: AddcourseComponent },
+  { path: 'addcourse/:id', component: AddcourseComponent },
   { path: 'tranning', component: TranningmatrialComponent },
   { path: 'addmatrial', component: AddmatrialComponent },
 ];

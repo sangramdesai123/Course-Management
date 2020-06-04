@@ -40,7 +40,8 @@
                         <th>Description</th>
                         <th>Skill</th>
                         <th>Prerequisite</th>
-                        <th>Action</th>
+                        <th>Update</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,6 +51,9 @@
                         <td>{{course.description}}</td>
                         <td>{{course.skill}}</td>
                         <td>{{course.prerequisite}}</td>
+                        <td class="text-center"><button class="btn btn-info btn-xs"
+                            (click)="updateCourse(course.id)"><span class="	glyphicon glyphicon-pencil"></span>
+                            Update</button></td>
                         <td class="text-center"><button class="btn btn-danger btn-xs"
                                 (click)="deleteCourse(course.id)"><span class="glyphicon glyphicon-remove"></span>
                                 Delete</button></td>
