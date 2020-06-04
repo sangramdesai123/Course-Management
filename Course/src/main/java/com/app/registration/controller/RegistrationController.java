@@ -26,10 +26,10 @@ public class RegistrationController {
 		String tempEmailId = user.getEmailId();
 		if(tempEmailId !=null && !"".equals(tempEmailId)) {
 			User userObj=service.fetchUserByEmailId(tempEmailId);
-			if(userObj != null) {
-				logger.info(" registeruser path call email id exist");
-				throw new Exception("User with "+tempEmailId+" id is already exist");
-			}
+//			if(userObj != null) {
+//				logger.info(" registeruser path call email id exist");
+//				throw new Exception("User with "+tempEmailId+" id is already exist");
+//			}
 		}
 		User userObj=service.saveUser(user);
 		return userObj;

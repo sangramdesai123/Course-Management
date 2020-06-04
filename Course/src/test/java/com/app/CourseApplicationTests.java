@@ -11,6 +11,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Collections;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -66,7 +67,42 @@ class CourseApplicationTests {
 		System.out.println(mvcResult.getResponse());
 		Mockito.verify(crepo).findAll();
 	}
+	
+	@Test
+	public void getCourseByCreatorTest() throws Exception {
+		String cr="sangram";
+		Mockito.when(crepo.findByCreator("sangram")).thenReturn(Collections.emptyList());
 
+		MvcResult mvcResult = mockMvc
+				.perform(MockMvcRequestBuilders.get("/getcourse/"+cr).accept(MediaType.APPLICATION_JSON)).andReturn();
+
+		System.out.println(mvcResult.getResponse());
+		Mockito.verify(crepo).findByCreator(cr);
+	}
+	
+	@Test
+	public void updateCourseByIdTest() throws Exception {
+		int id=2;
+		Mockito.when(crepo.findById(id)).thenReturn(null);
+
+		MvcResult mvcResult = mockMvc
+				.perform(MockMvcRequestBuilders.put("/updatecourse/"+id).accept(MediaType.APPLICATION_JSON)).andReturn();
+
+		System.out.println(mvcResult.getResponse());
+	}
+	
+	@Test
+	public void updateCourseTest() throws Exception {
+		
+		MvcResult mvcResult = mockMvc
+				.perform(MockMvcRequestBuilders.put("/updatecourse").accept(MediaType.APPLICATION_JSON)).andReturn();
+
+		System.out.println("update "+mvcResult.getResponse());
+		String content = mvcResult.getResponse().getContentAsString();
+		int status = mvcResult.getResponse().getStatus();
+		assertEquals(400, status);
+	}
+	
 	@Test
 	public void postCourseTest() throws Exception {
 		Course mycourse = new Course();
@@ -109,6 +145,16 @@ class CourseApplicationTests {
 		// System.out.println("byiiiii "+(crepo).findAll());
 		Mockito.verify(crepo).findAll();
 	}
+	@Test
+	public void deleteCourse2Test() throws Exception {
+		/*this is for branch exception*/
+		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.delete("/deleteCourse/11")).andReturn();
+		int status = mvcResult.getResponse().getStatus();
+		assertEquals(200, status);
+		String content = mvcResult.getResponse().getContentAsString();
+		System.out.println("delete course testhit " + content);
+		// System.out.println("byiiiii "+(crepo).findAll());
+	}
 
 	/*
 	 * Unit Test for For TrainingMatrial controller
@@ -128,6 +174,11 @@ class CourseApplicationTests {
 	@Test
 	public void postTrainingMatrialTest() throws Exception {
 		TrainingMaterial matrial = new TrainingMaterial();
+		
+		/*testing all branch statements*/
+		TrainingMaterial tt = new TrainingMaterial("j","a","a","a");
+		System.out.println(tt);
+		
 		matrial.setCourse("java");
 		matrial.setPpt("link to ppt");
 		matrial.setRecording("link recording");
@@ -174,6 +225,10 @@ class CourseApplicationTests {
 	public void postRegisterTest() throws Exception {
 		User myuser=new User();
 		User u = new User();
+		/*testing all branch statements*/
+		User uu=new User(2,"abc@gmail.com","ab","abc");
+		System.out.println(uu);
+		
 		myuser.setId(1);
 		myuser.setEmailId("sangram@gmail.com");
 		myuser.setPassword("1234");
@@ -216,16 +271,5 @@ class CourseApplicationTests {
 		System.out.println("login hit ");
 	}
 
-//	@Test
-//	public void saveCourseTest() throws Exception {
-//		Course c = new Course(1, "Pankti", "RDBMS", "RDBMS", "Nothing", "29-05-2020", "This is best course on RDBMS",
-//				4);
-//		String jsonRequest = om.writeValueAsString(c);
-//		System.out.println(jsonRequest);
-//		MvcResult result = mockMvc
-//				.perform(post("http://localhost:8080/addcourse").content(jsonRequest).content(MediaType.APPLICATION_JSON)).andReturn();
-//		String resultContent=result.getResponse().getContentAsString();
-//		assertEquals("Course added Successfully",resultContent);
-//	}
 
 }
