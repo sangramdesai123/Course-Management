@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../Course';
 import { RegistrationService } from '../registration.service';
-import { Router,ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-addcourse',
@@ -11,16 +11,21 @@ import { Router,ActivatedRoute } from '@angular/router';
 export class AddcourseComponent implements OnInit {
   course: Course = new Course();
   msg: any;
-  id:any;
-  constructor(private _service: RegistrationService,private _activatedRoute: ActivatedRoute) {}
+  id: any;
+  constructor(
+    private _service: RegistrationService,
+    private _activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this._activatedRoute.params.subscribe(params => {
+    this._activatedRoute.params.subscribe((params) => {
       if (typeof params['id'] !== 'undefined') {
-          this.id = params['id'];
-          this._service.getCourse(this.id).subscribe((data) => (this.course= data));
+        this.id = params['id'];
+        this._service
+          .getCourse(this.id)
+          .subscribe((data) => (this.course = data));
       } else {
-          this.id = '';
+        this.id = '';
       }
     });
   }
@@ -30,7 +35,8 @@ export class AddcourseComponent implements OnInit {
   }
 
   public updateCourse() {
-    this._service.updateCourse(this.course).subscribe((data) => (this.msg = data));
+    this._service
+      .updateCourse(this.course)
+      .subscribe((data) => (this.msg = data));
   }
-
 }

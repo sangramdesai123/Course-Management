@@ -11,7 +11,7 @@ export class DashboardComponent implements OnInit {
   courselist: any;
   id: any;
   creator: String;
-  constructor(private _service: RegistrationService,private _router: Router) {}
+  constructor(private _service: RegistrationService, private _router: Router) {}
 
   public deleteCourse(id: number) {
     let resp = this._service.deleteCourse(id);
@@ -19,8 +19,8 @@ export class DashboardComponent implements OnInit {
   }
 
   public updateCourse(id: number) {
-    console.log("update");
-    this._router.navigate(['/addcourse/'+id ]);
+    console.log('update');
+    this._router.navigate(['/addcourse/' + id]);
   }
 
   public searchCoursebyCreator() {
