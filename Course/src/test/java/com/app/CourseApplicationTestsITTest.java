@@ -30,7 +30,6 @@ import com.app.registration.repository.RegistrationRepository;
 import com.app.registration.repository.TrainingMatrialRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -48,8 +47,7 @@ class CourseApplicationTestsITTest {
 	/*
 	 * Integration Test for For Course
 	 */
-	
-	
+
 	@Test
 	public void getAllCourseItTest() throws Exception {
 		MvcResult mvcResult = mockMvc
@@ -57,14 +55,14 @@ class CourseApplicationTestsITTest {
 
 		System.out.println(mvcResult.getResponse());
 	}
-	
+
 	@Test
 	public void postCourseItTest() throws Exception {
 		Course mycourse = new Course();
-		/*covering all branch statement*/
-		Course test = new Course(11,"a","a","a","a","a","a",1);
+		/* covering all branch statement */
+		Course test = new Course(11, "a", "a", "a", "a", "a", "a", 1);
 		System.out.println(test);
-		
+
 		mycourse.setCreator("sangram");
 		mycourse.setId(1);
 		mycourse.setDescription("hi");
@@ -78,7 +76,7 @@ class CourseApplicationTestsITTest {
 				.andReturn();
 		System.out.println(mvcResult);
 	}
-	
+
 	@Test
 	public void getCourseItTest() throws Exception {
 		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/getcourse/sangram")).andReturn();
@@ -87,20 +85,20 @@ class CourseApplicationTestsITTest {
 		String content = mvcResult.getResponse().getContentAsString();
 		System.out.println("get course testhit " + content);
 	}
-	
+
 	@Test
 	public void deleteCourseItsTest() throws Exception {
-		
+
 		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.delete("/deleteCourse/1")).andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(200, status);
-		
+
 	}
-	
+
 	@Test
 	public void updateCourseItsTest() throws Exception {
 		Course mycourse = new Course();
-		
+
 		mycourse.setCreator("sangram");
 		mycourse.setId(1);
 		mycourse.setDescription("hi");
@@ -112,16 +110,17 @@ class CourseApplicationTestsITTest {
 				MockMvcRequestBuilders.put("/updatecourse").contentType(MediaType.APPLICATION_JSON_VALUE).content(json))
 				.andReturn();
 		System.out.println(mvcResult);
-		
+
 	}
+
 	@Test
 	public void updateCourseIt2Test() throws Exception {
-		
+
 		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.put("/updatecourse/2")).andReturn();
 		int status = mvcResult.getResponse().getStatus();
-		
+
 	}
-	
+
 	/*
 	 * Integration Test for For TrainingMatrial controller
 	 */
@@ -155,16 +154,16 @@ class CourseApplicationTestsITTest {
 
 	@Test
 	public void getTrainingMatrialItTest() throws Exception {
-		
+
 		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/getmatrial/java")).andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(200, status);
-		
+
 	}
 
 	@Test
 	public void deleteTrainingMatrialItTest() throws Exception {
-				
+
 		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.delete("/deletematrial/Java")).andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(200, status);
@@ -172,13 +171,13 @@ class CourseApplicationTestsITTest {
 		System.out.println("delete course testhit " + content);
 		Mockito.verify(trepo).findAll();
 	}
-	
+
 	/*
 	 * Integration Test for For Registration controller
 	 */
 	@Test
 	public void postRegisterItTest() throws Exception {
-		User myuser=new User();
+		User myuser = new User();
 		User u = new User();
 		myuser.setId(1);
 		myuser.setEmailId("sangram@gmail.com");
@@ -187,35 +186,33 @@ class CourseApplicationTestsITTest {
 		ObjectMapper objectMapper = new ObjectMapper();
 		String json = objectMapper.writeValueAsString(myuser);
 
-		MvcResult mvcResult = mockMvc.perform(
-				MockMvcRequestBuilders.post("/registeruser").contentType(MediaType.APPLICATION_JSON_VALUE).content(json))
-				.andReturn();
+		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/registeruser")
+				.contentType(MediaType.APPLICATION_JSON_VALUE).content(json)).andReturn();
 
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(200, status);
 	}
-	
+
 	@Test
 	public void postLoginItTest() throws Exception {
-		User myuser=new User();
+		User myuser = new User();
 		myuser.setId(1);
 		myuser.setEmailId("sangram@gmail.com");
 		myuser.setPassword("1234");
 		ObjectMapper objectMapper = new ObjectMapper();
 		String json = objectMapper.writeValueAsString(myuser);
 
-		
 		Exception exception = assertThrows(Exception.class, () -> {
 			MvcResult mvcResult = mockMvc.perform(
 					MockMvcRequestBuilders.post("/login").contentType(MediaType.APPLICATION_JSON_VALUE).content(json))
 					.andReturn();
-	    });
-	 
-	    String expectedMessage = "Bad credentational";
-	    String actualMessage = exception.getMessage();
-	 
-	    assertTrue(actualMessage.contains(expectedMessage));
-	    
+		});
+
+		String expectedMessage = "Bad credentational";
+		String actualMessage = exception.getMessage();
+
+		assertTrue(actualMessage.contains(expectedMessage));
+
 		System.out.println("login hit ");
 	}
 

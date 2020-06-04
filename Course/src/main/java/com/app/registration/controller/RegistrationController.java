@@ -15,37 +15,37 @@ import com.app.registration.service.RegistrationService;
 public class RegistrationController {
 
 	/*
-	 * when user submit the form this will directly function will be map 
+	 * when user submit the form this will directly function will be map
 	 */
-	Logger logger=LoggerFactory.getLogger(CourseController.class);
+	Logger logger = LoggerFactory.getLogger(CourseController.class);
 	@Autowired
 	private RegistrationService service;
+
 	@PostMapping("/registeruser")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public User registerUser(@RequestBody User user) throws Exception {
 		String tempEmailId = user.getEmailId();
-		if(tempEmailId !=null && !"".equals(tempEmailId)) {
-			User userObj=service.fetchUserByEmailId(tempEmailId);
+		if (tempEmailId != null && !"".equals(tempEmailId)) {
+			User userObj = service.fetchUserByEmailId(tempEmailId);
 //			if(userObj != null) {
 //				logger.info(" registeruser path call email id exist");
 //				throw new Exception("User with "+tempEmailId+" id is already exist");
 //			}
 		}
-		User userObj=service.saveUser(user);
+		User userObj = service.saveUser(user);
 		return userObj;
 	}
-	
-	
+
 	@PostMapping("/login")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public User loginUser(@RequestBody User user) throws Exception {
-		String tempEmailId =user.getEmailId();
+		String tempEmailId = user.getEmailId();
 		String tempPass = user.getPassword();
-		User userObj=null;
-		if(tempEmailId != null && tempPass != null) {
-			userObj=service.fetchUserByEmailIdAndPassword(tempEmailId, tempPass);
+		User userObj = null;
+		if (tempEmailId != null && tempPass != null) {
+			userObj = service.fetchUserByEmailIdAndPassword(tempEmailId, tempPass);
 		}
-		if(userObj==null) {
+		if (userObj == null) {
 			logger.info(" login path call Bad credentational");
 			throw new Exception("Bad credentational");
 		}

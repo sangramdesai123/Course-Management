@@ -50,7 +50,7 @@ class CourseApplicationTests {
 
 	@Test
 	void contextLoads() {
-		CourseApplication.main(new String[] {"arg1", "arg2", "arg3"});
+		CourseApplication.main(new String[] { "arg1", "arg2", "arg3" });
 	}
 
 	/*
@@ -59,10 +59,10 @@ class CourseApplicationTests {
 
 	@Test
 	public void getAllCourseTest() throws Exception {
-		/*covering all branch statement*/
-		Course test = new Course(11,"a","a","a","a","a","a",1);
+		/* covering all branch statement */
+		Course test = new Course(11, "a", "a", "a", "a", "a", "a", 1);
 		System.out.println(test);
-		
+
 		Mockito.when(crepo.findAll()).thenReturn(Collections.emptyList());
 
 		MvcResult mvcResult = mockMvc
@@ -71,42 +71,43 @@ class CourseApplicationTests {
 		System.out.println(mvcResult.getResponse());
 		Mockito.verify(crepo).findAll();
 	}
-	
+
 	@Test
 	public void getCourseByCreatorTest() throws Exception {
-		String cr="sangram";
+		String cr = "sangram";
 		Mockito.when(crepo.findByCreator("sangram")).thenReturn(Collections.emptyList());
 
 		MvcResult mvcResult = mockMvc
-				.perform(MockMvcRequestBuilders.get("/getcourse/"+cr).accept(MediaType.APPLICATION_JSON)).andReturn();
+				.perform(MockMvcRequestBuilders.get("/getcourse/" + cr).accept(MediaType.APPLICATION_JSON)).andReturn();
 
 		System.out.println(mvcResult.getResponse());
 		Mockito.verify(crepo).findByCreator(cr);
 	}
-	
+
 	@Test
 	public void updateCourseByIdTest() throws Exception {
-		int id=2;
+		int id = 2;
 		Mockito.when(crepo.findById(id)).thenReturn(null);
 
 		MvcResult mvcResult = mockMvc
-				.perform(MockMvcRequestBuilders.put("/updatecourse/"+id).accept(MediaType.APPLICATION_JSON)).andReturn();
+				.perform(MockMvcRequestBuilders.put("/updatecourse/" + id).accept(MediaType.APPLICATION_JSON))
+				.andReturn();
 
 		System.out.println(mvcResult.getResponse());
 	}
-	
+
 	@Test
 	public void updateCourseTest() throws Exception {
-		
+
 		MvcResult mvcResult = mockMvc
 				.perform(MockMvcRequestBuilders.put("/updatecourse").accept(MediaType.APPLICATION_JSON)).andReturn();
 
-		System.out.println("update "+mvcResult.getResponse());
+		System.out.println("update " + mvcResult.getResponse());
 		String content = mvcResult.getResponse().getContentAsString();
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(400, status);
 	}
-	
+
 	@Test
 	public void postCourseTest() throws Exception {
 		Course mycourse = new Course();
@@ -149,9 +150,10 @@ class CourseApplicationTests {
 		// System.out.println("byiiiii "+(crepo).findAll());
 		Mockito.verify(crepo).findAll();
 	}
+
 	@Test
 	public void deleteCourse2Test() throws Exception {
-		/*this is for branch exception*/
+		/* this is for branch exception */
 		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.delete("/deleteCourse/11")).andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(200, status);
@@ -178,12 +180,12 @@ class CourseApplicationTests {
 	@Test
 	public void postTrainingMatrialTest() throws Exception {
 		TrainingMaterial matrial = new TrainingMaterial();
-		
-		/*testing all branch statements*/
-		TrainingMaterial tt = new TrainingMaterial("j","a","a","a");
+
+		/* testing all branch statements */
+		TrainingMaterial tt = new TrainingMaterial("j", "a", "a", "a");
 		System.out.println(tt);
 		trepo.findById(tt.getCourse());
-		
+
 		matrial.setCourse("java");
 		matrial.setPpt("link to ppt");
 		matrial.setRecording("link recording");
@@ -228,12 +230,12 @@ class CourseApplicationTests {
 	 */
 	@Test
 	public void postRegisterTest() throws Exception {
-		User myuser=new User();
+		User myuser = new User();
 		User u = new User();
-		/*testing all branch statements*/
-		User uu=new User(2,"abc@gmail.com","ab","abc");
+		/* testing all branch statements */
+		User uu = new User(2, "abc@gmail.com", "ab", "abc");
 		System.out.println(uu);
-		
+
 		myuser.setId(1);
 		myuser.setEmailId("sangram@gmail.com");
 		myuser.setPassword("1234");
@@ -241,40 +243,37 @@ class CourseApplicationTests {
 		ObjectMapper objectMapper = new ObjectMapper();
 		String json = objectMapper.writeValueAsString(myuser);
 
-		MvcResult mvcResult = mockMvc.perform(
-				MockMvcRequestBuilders.post("/registeruser").contentType(MediaType.APPLICATION_JSON_VALUE).content(json))
-				.andReturn();
+		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/registeruser")
+				.contentType(MediaType.APPLICATION_JSON_VALUE).content(json)).andReturn();
 
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(200, status);
 		String content = mvcResult.getResponse().getContentAsString();
-		System.out.println("register hit "+content);
+		System.out.println("register hit " + content);
 		assertNotNull(content);
 	}
-	
+
 	@Test
 	public void postLoginTest() throws Exception {
-		User myuser=new User();
+		User myuser = new User();
 		myuser.setId(1);
 		myuser.setEmailId("sangram@gmail.com");
 		myuser.setPassword("1234");
 		ObjectMapper objectMapper = new ObjectMapper();
 		String json = objectMapper.writeValueAsString(myuser);
 
-		
 		Exception exception = assertThrows(Exception.class, () -> {
 			MvcResult mvcResult = mockMvc.perform(
 					MockMvcRequestBuilders.post("/login").contentType(MediaType.APPLICATION_JSON_VALUE).content(json))
 					.andReturn();
-	    });
-	 
-	    String expectedMessage = "Bad credentational";
-	    String actualMessage = exception.getMessage();
-	 
-	    assertTrue(actualMessage.contains(expectedMessage));
-	    
+		});
+
+		String expectedMessage = "Bad credentational";
+		String actualMessage = exception.getMessage();
+
+		assertTrue(actualMessage.contains(expectedMessage));
+
 		System.out.println("login hit ");
 	}
-
 
 }

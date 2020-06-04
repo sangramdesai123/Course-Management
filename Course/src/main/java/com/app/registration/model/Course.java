@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Course")
+@Table(name = "Course")
 public class Course {
 	@Id
 	@GeneratedValue
@@ -18,9 +18,10 @@ public class Course {
 	private String lastUpdated;
 	private String feedback;
 	private int ratting;
-	
-	public Course() {}
-	
+
+	public Course() {
+	}
+
 	public Course(int id, String creator, String description, String skill, String prerequisite, String lastUpdated,
 			String feedback, int ratting) {
 		super();
@@ -34,50 +35,62 @@ public class Course {
 		this.ratting = ratting;
 	}
 
-
-
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public String getSkill() {
 		return skill;
 	}
+
 	public void setSkill(String skill) {
 		this.skill = skill;
 	}
+
 	public String getPrerequisite() {
 		return prerequisite;
 	}
+
 	public void setPrerequisite(String prerequisite) {
 		this.prerequisite = prerequisite;
 	}
+
 	public String getlastUpdated() {
 		return lastUpdated;
 	}
+
 	public void setlastUpdated(String lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}
+
 	public String getFeedback() {
 		return feedback;
 	}
+
 	public void setFeedback(String feedback) {
 		this.feedback = feedback;
 	}
+
 	public int getRatting() {
 		return ratting;
 	}
+
 	public void setRatting(int ratting) {
 		this.ratting = ratting;
 	}
+
 	public String getCreator() {
 		return creator;
 	}
@@ -92,9 +105,5 @@ public class Course {
 				+ ", prerequisite=" + prerequisite + ", lastUpdated=" + lastUpdated + ", feedback=" + feedback
 				+ ", ratting=" + ratting + "]";
 	}
-	
 
-	
-	
-	
 }

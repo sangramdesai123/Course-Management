@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 /*Entity is use because of repository so h2 database will be created according to the POJO*/
 @Entity
-@Table(name="User")
+@Table(name = "User")
 public class User {
 	@Id
 	@GeneratedValue
@@ -15,9 +15,10 @@ public class User {
 	private String emailId;
 	private String userName;
 	private String password;
-	
-	public User() {}
-		
+
+	public User() {
+	}
+
 	public User(int id, String emailId, String userName, String password) {
 		super();
 		this.id = id;
@@ -25,28 +26,35 @@ public class User {
 		this.userName = userName;
 		this.password = password;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getEmailId() {
 		return emailId;
 	}
+
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
+
 	public String getUserName() {
 		return userName;
 	}
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -55,6 +63,5 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", emailId=" + emailId + ", userName=" + userName + ", password=" + password + "]";
 	}
-		
-	
+
 }

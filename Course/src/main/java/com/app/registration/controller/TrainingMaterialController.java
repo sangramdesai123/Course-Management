@@ -20,55 +20,55 @@ import com.app.registration.service.TrainingMatrialService;
 
 @RestController
 public class TrainingMaterialController {
-	Logger logger=LoggerFactory.getLogger(CourseController.class);
-	
+	Logger logger = LoggerFactory.getLogger(CourseController.class);
+
 	@Autowired
 	public TrainingMatrialService tservice;
-	
+
 	@GetMapping("/getmatrial")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public List<TrainingMaterial> getTrainingMaterial() {
 		logger.info(" getmatrial path call");
 		return (List<TrainingMaterial>) tservice.findAllTrainingMaterial();
 	}
-	
+
 	@PostMapping("/addmatrial")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public String addTrainingMaterial(@RequestBody TrainingMaterial material) throws Exception {
-		String tempcourse= material.getCourse();
-		if(tempcourse !=null && !"".equals(tempcourse)) {
-			List<TrainingMaterial> matrialObj= tservice.fetchMatrialByCourse(tempcourse);
-			if(!matrialObj.isEmpty()) {
-				return "Course with "+tempcourse+" is already exist";
+		String tempcourse = material.getCourse();
+		if (tempcourse != null && !"".equals(tempcourse)) {
+			List<TrainingMaterial> matrialObj = tservice.fetchMatrialByCourse(tempcourse);
+			if (!matrialObj.isEmpty()) {
+				return "Course with " + tempcourse + " is already exist";
 			}
 		}
-		 tservice.saveTrainingMaterial(material);
+		tservice.saveTrainingMaterial(material);
 		return "Course Matrial added Successfully";
 	}
-	
+
 	@GetMapping("/getmatrial/{course}")
 	@CrossOrigin(origins = "http://localhost:4200")
-	public List<TrainingMaterial>  getBycourse(@PathVariable String course) {
-	    try {
-	    	List<TrainingMaterial> matrial = tservice.fetchMatrialByCourse(course);
-	        return matrial;
-	    } catch (Exception e) {
-	    	logger.error(" /getmatrial/{course} path call has exception"+e.getMessage());
-	        return null;
-	    }      
-	}
-	
-	@DeleteMapping("/deletematrial/{course}")
-	@CrossOrigin(origins = "http://localhost:4200")
-	public List<TrainingMaterial>  deleteMatrial(@PathVariable String course) {
+	public List<TrainingMaterial> getBycourse(@PathVariable String course) {
 		try {
-			tservice.deleteTrainingMaterial(course);
-			 return tservice.findAllTrainingMaterial();
-		}catch(Exception e) {
-			logger.error(" /deletematrial/{course} path call has exception"+e.getMessage());
+			List<TrainingMaterial> matrial = tservice.fetchMatrialByCourse(course);
+			return matrial;
+		} catch (Exception e) {
+			logger.error(" /getmatrial/{course} path call has exception" + e.getMessage());
 			return null;
 		}
-		
 	}
-	
+
+	@DeleteMapping("/deletematrial/{course}")
+	@CrossOrigin(origins = "http://localhost:4200")
+	public List<TrainingMaterial> deleteMatrial(@PathVariable String course) {
+		try {
+			tservice.deleteTrainingMaterial(course);
+			return tservice.findAllTrainingMaterial();
+		} catch (Exception e) {
+			logger.error(" /deletematrial/{course} path call has exception" + e.getMessage());
+			return null;
+		}
+
+	}
+
 }

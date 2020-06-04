@@ -12,7 +12,7 @@ public class CourseApplication {
 	 * 
 	 * http://localhost:8080/login
 	 * 
-	 * */
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(CourseApplication.class, args);
 	}
