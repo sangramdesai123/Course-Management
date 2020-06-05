@@ -1,5 +1,7 @@
 package com.app.registration.controller;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +35,6 @@ public class CourseController {
 		if (tempskill != null && !"".equals(tempskill)) {
 			Course courseObj = cservice.fetchCourseBySkill(tempskill);
 			if (courseObj != null) {
-				logger.info(" addcourses path call");
 				return "Course with " + tempskill + " id is already exist";
 			}
 		}
@@ -44,8 +45,16 @@ public class CourseController {
 	@GetMapping("/getcourse")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public List<Course> getCourse() {
+		
 		logger.info(" getcourse path call");
-		return (List<Course>) cservice.findAllCourse();
+		List<Course> list= (List<Course>) cservice.findAllCourse();
+		Collections.sort(list,new Comparator<Course>() {
+		    @Override
+		    public int compare(Course a, Course b) {
+		        return b.getRatting()-a.getRatting();
+		    }
+		});
+		return list;
 
 	}
 

@@ -19,6 +19,7 @@ import {
 } from 'angularx-social-login';
 import { TrainingService } from './training.service';
 import { AddmatrialComponent } from './addmatrial/addmatrial.component';
+import { TrendComponent } from './trend/trend.component';
 let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -42,6 +43,7 @@ export function provideConfig() {
     AddcourseComponent,
     TranningmatrialComponent,
     AddmatrialComponent,
+    TrendComponent,
   ],
   imports: [
     BrowserModule,

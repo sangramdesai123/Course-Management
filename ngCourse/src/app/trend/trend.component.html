@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div *ngFor="let course of courselist" class="col-sm-3 mycard">
+            <h3 class="card-title text-center">{{course.skill}}</h3>
+            <hr>    
+            <div class="row">
+                <div class="col-sm-6">  Id </div>
+                <div class="col-sm-6"> {{course.id}} </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">  Creator </div>
+                <div class="col-sm-6"> {{course.creator}} </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">  Prerequisite </div>
+                <div class="col-sm-6"> {{course.prerequisite}} </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">  Ratting </div>
+                <div class="col-sm-6"> {{course.ratting}} </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">  Last Updated </div>
+                <div class="col-sm-6"> {{course.lastUpdated}}</div>
+            </div>
+            <br>
+            <div class=" text-center">
+            <button class="btn btn-info">Apply</button>
+        </div>
+
+        </div>
+    </div>
+</div>

@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddcourseComponent } from './addcourse/addcourse.component';
 import { TranningmatrialComponent } from './tranningmatrial/tranningmatrial.component';
 import { AddmatrialComponent } from './addmatrial/addmatrial.component';
+import { TrendComponent } from './trend/trend.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'addcourse/:id', component: AddcourseComponent },
   { path: 'tranning', component: TranningmatrialComponent },
   { path: 'addmatrial', component: AddmatrialComponent },
+  { path: 'trends', component: TrendComponent }
 ];
 
 @NgModule({
