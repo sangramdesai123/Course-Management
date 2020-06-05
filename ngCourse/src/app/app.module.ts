@@ -45,14 +45,14 @@ export function provideConfig() {
     TranningmatrialComponent,
     AddmatrialComponent,
     TrendComponent,
-    SendemailComponent,
+    SendemailComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    SocialLoginModule,
+    SocialLoginModule
   ],
   providers: [
     RegistrationService,
