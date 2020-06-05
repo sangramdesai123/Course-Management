@@ -23,4 +23,7 @@ describe('TrendComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it(" create component", () => {
+    component.ngOnInit();
+  });
 });
