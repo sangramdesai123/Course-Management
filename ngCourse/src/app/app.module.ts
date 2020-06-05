@@ -20,6 +20,7 @@ import {
 import { TrainingService } from './training.service';
 import { AddmatrialComponent } from './addmatrial/addmatrial.component';
 import { TrendComponent } from './trend/trend.component';
+import { SendemailComponent } from './sendemail/sendemail.component';
 let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -44,6 +45,7 @@ export function provideConfig() {
     TranningmatrialComponent,
     AddmatrialComponent,
     TrendComponent,
+    SendemailComponent,
   ],
   imports: [
     BrowserModule,
