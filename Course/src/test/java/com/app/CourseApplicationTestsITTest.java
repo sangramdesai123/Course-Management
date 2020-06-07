@@ -135,6 +135,8 @@ class CourseApplicationTestsITTest {
 	@Test
 	public void postTrainingMatrialItTest() throws Exception {
 		TrainingMaterial matrial = new TrainingMaterial();
+		TrainingMaterial tt = new TrainingMaterial("a","a","a","a");
+		System.out.println(tt);
 		matrial.setCourse("java");
 		matrial.setPpt("link to ppt");
 		matrial.setRecording("link recording");
@@ -179,6 +181,8 @@ class CourseApplicationTestsITTest {
 	public void postRegisterItTest() throws Exception {
 		User myuser = new User();
 		User u = new User();
+		User uu = new User(1,"a","a","a");
+		System.out.println(uu);
 		myuser.setId(1);
 		myuser.setEmailId("sangram@gmail.com");
 		myuser.setPassword("1234");
