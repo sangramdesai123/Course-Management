@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule,HttpTestingController } from '@angular/common/http/testing';
 import { RegistrationComponent } from './registration.component';
+import { AuthService } from 'angularx-social-login';
 
 describe('RegistrationComponent', () => {
   let component: RegistrationComponent;
@@ -9,6 +10,7 @@ describe('RegistrationComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [RegistrationComponent],
+      imports: [HttpClientTestingModule,AuthService],
     }).compileComponents();
   }));
 

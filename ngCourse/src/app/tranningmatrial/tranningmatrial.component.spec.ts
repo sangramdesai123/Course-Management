@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule,HttpTestingController } from '@angular/common/http/testing';
 import { TranningmatrialComponent } from './tranningmatrial.component';
 
 describe('TranningmatrialComponent', () => {
@@ -9,6 +9,7 @@ describe('TranningmatrialComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TranningmatrialComponent],
+      imports: [HttpClientTestingModule]
     }).compileComponents();
   }));
 
@@ -20,5 +21,8 @@ describe('TranningmatrialComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it(" create component", () => {
+    component.ngOnInit();
   });
 });
