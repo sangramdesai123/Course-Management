@@ -1,22 +1,22 @@
 ## :camera: UI Screenshots
 
 ### login
-![](screenshots/login.png)
+![](https://github.com/sangramdesai123/Course-Management/tree/master/screenshots/login.png)
 
 ### Register
-![](screenshots/register.png)
+![](../screenshots/register.png)
 
 ### courses
-![](screenshots/listcourses.png)
+![](../screenshots/listcourses.png)
 
 ### Trend
-![](screenshots/trend.png)
+![](../screenshots/trend.png)
 
 ### Email
-![](screenshots/email.png)
+![](../screenshots/email.png)
 
 ### Testing
-![](screenshots/testcoverage.png)
+![](../screenshots/testcoverage.png)
 
 ### Test coverage
-![](screenshots/testing.png)
+![](../screenshots/testing.png)
