@@ -46,9 +46,9 @@
                 <tbody>
                     <tr *ngFor="let matrial of matriallist">
                         <td>{{matrial.course}}</td>
-                        <td><a href="{{matrial.recording}}">{{matrial.recording}}</a></td>
-                        <td><a href="{{matrial.ppt}}">{{matrial.ppt}}</a></td>
-                        <td><a href="{{matrial.assignment}}">{{matrial.assignment}}</a></td>
+                        <td><a target="_blank" href="{{matrial.recording}}">{{matrial.recording}}</a></td>
+                        <td><a target="_blank" href="{{matrial.ppt}}">{{matrial.ppt}}</a></td>
+                        <td><a target="_blank"href="{{matrial.assignment}}">{{matrial.assignment}}</a></td>
                         <td class="text-center"><button class="btn btn-danger btn-xs"
                                 (click)="deleteMatrial(matrial.course)"><span class="glyphicon glyphicon-remove"></span>
                                 Delete</button></td>

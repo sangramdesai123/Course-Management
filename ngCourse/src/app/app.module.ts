@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginsuccessComponent } from './loginsuccess/loginsuccess.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RegistrationService } from './registration.service';
@@ -21,6 +20,7 @@ import { TrainingService } from './training.service';
 import { AddmatrialComponent } from './addmatrial/addmatrial.component';
 import { TrendComponent } from './trend/trend.component';
 import { SendemailComponent } from './sendemail/sendemail.component';
+import { NotfounndComponent } from './notfounnd/notfounnd.component';
 let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -38,7 +38,6 @@ export function provideConfig() {
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    LoginsuccessComponent,
     DashboardComponent,
     NavbarComponent,
     AddcourseComponent,
@@ -46,6 +45,7 @@ export function provideConfig() {
     AddmatrialComponent,
     TrendComponent,
     SendemailComponent,
+    NotfounndComponent,
   ],
   imports: [
     BrowserModule,
