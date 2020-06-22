@@ -32,6 +32,9 @@ This project is for the Course management system it is a part of java spring boo
 
 
 ------------------------------------------
+### Demo
+ https://github.com/sangramdesai123/Course-Management/blob/master/Course/README.md
+
 ### Contributing
 
  We're are open to `enhancements` & `bug-fixes` :smile: Also do have a look [here](./CONTRIBUTING.md)
